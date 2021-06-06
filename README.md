@@ -16,7 +16,29 @@ Lors de l'étape d'analyse et d'études statistiques, nous avons observé la den
 
 Pour la suite, nous allons utiliser la réegression logistique dans le but de pouvoir classifier nos données.
 Etant donné que notre base de données est déséquilibrée (grande proportion de données non-frauduleuses et petite de frauduleuses), l'algorithme aura naturellement tendance à classifier les données comme étant non-frauduleuses même si elles sont véritablement frauduleuses. Dans notre étude, on va donc s'intéresser à minimiser le taux de faux négatifs (lorsque l'algorithme prédit la donnée comme étant non-frauduleuse alors qu'elle est frauduleuse).
+
 ![alt text](https://github.com/JessicaGourdon/Fraudes-de-Cartes-Bancaires/blob/main/Capture%20d%E2%80%99%C3%A9cran%20(219).png)
+
 Nous avons par la suite fait de nombreux test pour appliquer notre régression logistique. 
 Nous avons d'abord pris l'intégralité du dataset :
-![alt texte](https://github.com/JessicaGourdon/Fraudes-de-Cartes-Bancaires/blob/main/Capture%20d%E2%80%99%C3%A9cran%20(220).png)
+
+![alt text](https://github.com/JessicaGourdon/Fraudes-de-Cartes-Bancaires/blob/main/Capture%20d%E2%80%99%C3%A9cran%20(220).png)
+
+Nous avons également  fais des test concernant le cas où l'on prenait autant de transactions frauduleuses que non-frauduleuses :
+
+![alt text](https://github.com/JessicaGourdon/Fraudes-de-Cartes-Bancaires/blob/main/SchmaDonnees50-50.png)
+![alt text](https://github.com/JessicaGourdon/Fraudes-de-Cartes-Bancaires/blob/main/Capture%20d%E2%80%99%C3%A9cran%20(221).png)
+
+Etant donné le déséquilibre de notre dataset, si nous utilisons directement le dataset fourni, le modèle préfèrera prédire une transaction non frauduleuse avec une grande précision.
+Une des méthodes pour remédier à ce problème est d'assigner un poids à la classe qui possède le moins de données.
+On a fixé donc notre poids grâce à un produit en croix : on fixe le poids d'une transaction non frauduleuse à 1 et celui des non-frauduleuses à :
+nombre de transactions non-frauduleuses/ nombre de transactions frauduleuse. On va donc utiliser une régression logistique pondéré .
+![alt text](https://github.com/JessicaGourdon/Fraudes-de-Cartes-Bancaires/blob/main/Capture%20d%E2%80%99%C3%A9cran%20(222).png)
+
+Voici notre code :
+>[Code](https://github.com/JessicaGourdon/Fraudes-de-Cartes-Bancaires/blob/main/Projet_Data_Valorization.ipynb)
+
+Ainsi que notre présentation:
+>[Présentation](https://github.com/JessicaGourdon/Fraudes-de-Cartes-Bancaires/blob/main/Kaggle2.pptx)
+
+
